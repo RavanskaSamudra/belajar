@@ -18,58 +18,45 @@ class PegawaiController extends Controller
         // mengirim data pegawai ke view index
         return view('pegawai', ['pegawai' => $pegawai]);
     }
-    public function formulir()
-    {
-        return view('formulir');
-    }
-    public function proses(Request $request)
-    {
-        $nama = $request->input('nama');
-        $alamat = $request->input('alamat');
-        return "Nama: " . $nama . ", Alamat: " . $alamat;
-    }
     public function tambah()
     {
-        return view('tambah');
+        return view('tambah_pegawai');
     }
     public function store(Request $request)
     {
-        DB::table('pegawai')->insert([
-            'nama_pegawai' => $request->nama,
-            'nama_jabatan' => $request->jabatan,
-            'pegawai_umur' => $request->umur,
-            'alamat' => $request->alamat,
-
-
+        $request->validate([
+            'nama' => 'required',
+            'alamat' => 'required'
         ]);
-        return redirect('pegawai');
+
+        Pegawai::create([
+            'nama' =>  $request->nama,
+            'alamat' => $request->alamat
+        ]);
+
+        return redirect('/pegawai');
     }
     public function edit($id)
     {
-        $pegawai = DB::table('pegawai')->where('pegawai_id', $id)->get();
-        return view('edit', ['pegawai' => $pegawai]);
+        $pegawai = Pegawai::find($id);
+        return view('edit_pegawai', ['pegawai' => $pegawai]);
     }
-    public function update(Request $request)
+    public function update($id, Request $request)
     {
-        // update data pegawai
-        DB::table('pegawai')->where('pegawai_id', $request->id)->update([
-            'nama_pegawai' => $request->nama,
-            'nama_jabatan' => $request->jabatan,
-            'pegawai_umur' => $request->umur,
-            'alamat' => $request->alamat
+        $request->validate([
+            'nama' => 'required',
+            'alamat' => 'required'
         ]);
-        // alihkan halaman ke halaman pegawai
+        $pegawai = Pegawai::find($id);
+        $pegawai->nama = $request->nama;
+        $pegawai->alamat = $request->alamat;
+        $pegawai->save();
         return redirect('/pegawai');
     }
     public function hapus($id)
     {
-        DB::table('pegawai')->where('pegawai_id', $id)->delete();
+        $pegawai = Pegawai::find($id);
+        $pegawai->delete();
         return redirect('/pegawai');
-    }
-    public function cari(Request $request)
-    {
-        $cari = $request->cari;
-        $pegawai = DB::table('pegawai')->where('nama_pegawai', 'like', "%" . $cari . "%")->paginate();
-        return view('index', ['pegawai' => $pegawai]);
     }
 }
