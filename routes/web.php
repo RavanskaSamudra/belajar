@@ -1,12 +1,13 @@
 <?php
 
+use App\Http\Controllers\BelajarController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\PegawaiController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('blog');
 });
 Route::get('halo', function () {
     return "Halo, Selamat Datang Di Web saya";
@@ -25,3 +26,7 @@ Route::post('/pegawai/store', [PegawaiController::class, 'store']);
 Route::get('/pegawai/edit/{id}', [PegawaiController::class, 'edit']);
 Route::post('/pegawai/update', [PegawaiController::class, 'update']);
 Route::get('/pegawai/hapus/{id}', [PegawaiController::class, 'hapus']);
+Route::get('/pegawai/cari', [PegawaiController::class, 'cari']);
+
+Route::get('/input', [BelajarController::class, 'input']);
+Route::post('/proses', [BelajarController::class, 'proses']);

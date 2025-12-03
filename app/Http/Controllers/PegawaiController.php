@@ -6,13 +6,17 @@ use Illuminate\Foundation\Providers\FoundationServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+use App\Models\Pegawai;
+
 class PegawaiController extends Controller
 {
     public function index()
     {
-        $pegawai = DB::table('pegawai')->get();
 
-        return view('index', ['pegawai' => $pegawai]);
+        $pegawai = Pegawai::all();
+
+        // mengirim data pegawai ke view index
+        return view('pegawai', ['pegawai' => $pegawai]);
     }
     public function formulir()
     {
@@ -61,5 +65,11 @@ class PegawaiController extends Controller
     {
         DB::table('pegawai')->where('pegawai_id', $id)->delete();
         return redirect('/pegawai');
+    }
+    public function cari(Request $request)
+    {
+        $cari = $request->cari;
+        $pegawai = DB::table('pegawai')->where('nama_pegawai', 'like', "%" . $cari . "%")->paginate();
+        return view('index', ['pegawai' => $pegawai]);
     }
 }
