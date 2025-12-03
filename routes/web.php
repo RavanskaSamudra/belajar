@@ -3,6 +3,7 @@
 use App\Http\Controllers\BelajarController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\DosenController;
+use App\Http\Controllers\GuruController;
 use App\Http\Controllers\PegawaiController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,3 +31,11 @@ Route::get('/pegawai/cari', [PegawaiController::class, 'cari']);
 
 Route::get('/input', [BelajarController::class, 'input']);
 Route::post('/proses', [BelajarController::class, 'proses']);
+
+Route::get('/guru', [GuruController::class, 'index']);
+Route::get('/guru/hapus/{id}', [GuruController::class, 'hapus']);
+Route::get('/guru/trash', [GuruController::class, 'trash']);
+Route::get('/guru/kembalikan/{id}', [GuruController::class, 'kembalikan']);
+Route::get('/guru/kembalikan_semua', [GuruController::class, 'kembalikan_semua']);
+Route::get('/guru/hapus_permanen/{id}', [GuruController::class, 'hapus_permanen']);
+Route::get('/guru/hapus_permanen_semua', [GuruController::class, 'hapus_permanen_semua']);
