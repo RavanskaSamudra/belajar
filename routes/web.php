@@ -5,6 +5,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\PegawaiController;
+use App\Http\Controllers\PenggunaController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -39,3 +40,5 @@ Route::get('/guru/kembalikan/{id}', [GuruController::class, 'kembalikan']);
 Route::get('/guru/kembalikan_semua', [GuruController::class, 'kembalikan_semua']);
 Route::get('/guru/hapus_permanen/{id}', [GuruController::class, 'hapus_permanen']);
 Route::get('/guru/hapus_permanen_semua', [GuruController::class, 'hapus_permanen_semua']);
+
+Route::get('/pengguna', [PenggunaController::class, 'index']);
