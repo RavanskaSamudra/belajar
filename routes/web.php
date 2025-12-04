@@ -2,10 +2,12 @@
 
 use App\Http\Controllers\BelajarController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\DikiController;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\PenggunaController;
+use App\Http\Controllers\WebController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -42,3 +44,7 @@ Route::get('/guru/hapus_permanen/{id}', [GuruController::class, 'hapus_permanen'
 Route::get('/guru/hapus_permanen_semua', [GuruController::class, 'hapus_permanen_semua']);
 
 Route::get('/pengguna', [PenggunaController::class, 'index']);
+
+Route::get('/article', [WebController::class, 'index']);
+
+Route::get('/anggota', [DikiController::class, 'index']);
