@@ -4,7 +4,9 @@ use App\Http\Controllers\BelajarController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\DikiController;
 use App\Http\Controllers\DosenController;
+use App\Http\Controllers\ErrorController;
 use App\Http\Controllers\GuruController;
+use App\Http\Controllers\NotifController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\WebController;
@@ -48,3 +50,12 @@ Route::get('/pengguna', [PenggunaController::class, 'index']);
 Route::get('/article', [WebController::class, 'index']);
 
 Route::get('/anggota', [DikiController::class, 'index']);
+
+Route::get('/pesan', [NotifController::class, 'index']);
+Route::get('/pesan/sukses', [NotifController::class, 'sukses']);
+Route::get('/pesan/warning', [NotifController::class, 'warning']);
+Route::get('/pesan/gagal', [NotifController::class, 'gagal']);
+
+
+Route::get('/error', [ErrorController::class, 'index']);
+Route::get('/error/{nama}', [ErrorController::class, 'index']);
