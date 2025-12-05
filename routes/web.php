@@ -10,7 +10,9 @@ use App\Http\Controllers\MailController;
 use App\Http\Controllers\NotifController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\PenggunaController;
+use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\WebController;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -64,6 +66,11 @@ Route::get('/error/{nama}', [ErrorController::class, 'index']);
 
 Route::get('/kirimemail', [MailController::class, 'index']);
 
-Route::get('/form', function () {
+Route::get('/{locale}/form', function () {
+    $locale = config('app.locale');
+    App::setLocale($locale);
     return view('biodata');
 });
+
+Route::get('/siswa', [SiswaController::class, 'index']);
+Route::get('/siswa/export', [SiswaController::class, 'export']);
