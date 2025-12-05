@@ -66,9 +66,11 @@ Route::get('/error/{nama}', [ErrorController::class, 'index']);
 
 Route::get('/kirimemail', [MailController::class, 'index']);
 
-Route::get('/{locale}/form', function () {
-    $locale = config('app.locale');
+Route::get('/{locale}/form', function ($locale) {
     App::setLocale($locale);
+    return view('biodata');
+});
+Route::get('/form', function () {
     return view('biodata');
 });
 

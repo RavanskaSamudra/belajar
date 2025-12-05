@@ -10,11 +10,11 @@ class ExportSiswa implements FromCollection, WithHeadings
 {
     public function collection()
     {
-        return Siswa::select('id', 'nama', 'kelas', 'alamat')->get();
+        return Siswa::select('id', 'nama', 'nis', 'alamat')->get();
     }
 
     public function headings(): array
     {
-        return ['ID', 'Nama', 'Kelas', 'Alamat'];
+        return ['ID', 'Nama', 'nis', 'Alamat'];
     }
 }
