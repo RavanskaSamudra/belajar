@@ -6,6 +6,7 @@ use App\Http\Controllers\DikiController;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\ErrorController;
 use App\Http\Controllers\GuruController;
+use App\Http\Controllers\HaloController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\NotifController;
 use App\Http\Controllers\PegawaiController;
@@ -77,3 +78,6 @@ Route::get('/form', function () {
 Route::get('/siswa', [SiswaController::class, 'index']);
 Route::get('/siswa/export', [SiswaController::class, 'export']);
 Route::post('/siswa/import', [SiswaController::class, 'import']);
+
+Route::get('/halo/{nama}', [HaloController::class, 'index']);
+Route::get('/halo/', [HaloController::class, 'panggil']);
