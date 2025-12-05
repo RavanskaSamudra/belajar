@@ -1,15 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Biodata</title>
+	<title>Tutorial Multi Bahasa Localization Laravel - www.malasngoding.com</title>
 </head>
 <body>
-    
-    <h1>Nama Saya Ravanska Adhitya samudra</h1>
-    <h2>Saya Berasal Dari Kota Solo</h2>
-    <h3>Saya Sekolah Di SMK2KRA</h3>
+ 
+	<h2>@lang('biodata.welcome')</h2>
+	<h4><a href="https://www.malasngoding.com">www.malasngoding.com</a></h4>
+ 
+	<p>@lang('biodata.title')</p>
+ 
+	<form>
+		<div>
+			<label>@lang('biodata.profil.name')</label>
+			<input type="text" name="">
+		</div>
+ 
+		<div>
+			<label>@lang('biodata.profil.address')</label>
+			<input type="text" name="">
+		</div>
+ 
+		<div>
+			<label>@lang('biodata.profil.hobby')</label>
+			<input type="text" name="">
+		</div>
+ 
+		<div>
+			<label>@lang('biodata.profil.job')</label>
+			<input type="text" name="">
+		</div>
+ 
+		<div>
+			<button>@lang('biodata.button')</button>
+		</div>
+	</form>
+ 
+	<p>@lang('biodata.thank')</p>
+ 
 </body>
 </html>

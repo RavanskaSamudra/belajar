@@ -6,6 +6,7 @@ use App\Http\Controllers\DikiController;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\ErrorController;
 use App\Http\Controllers\GuruController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\NotifController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\PenggunaController;
@@ -27,6 +28,7 @@ Route::get('formulir', [PegawaiController::class, 'formulir']);
 Route::post('formulir/proses', [PegawaiController::class, 'Proses']);
 
 Route::get('pegawai', [PegawaiController::class, 'index']);
+Route::get('pegawai/cetak_pdf', [PegawaiController::class, 'cetak_pdf']);
 Route::get('/pegawai/tambah', [PegawaiController::class, 'tambah']);
 Route::post('/pegawai/store', [PegawaiController::class, 'store']);
 Route::get('/pegawai/edit/{id}', [PegawaiController::class, 'edit']);
@@ -59,3 +61,9 @@ Route::get('/pesan/gagal', [NotifController::class, 'gagal']);
 
 Route::get('/error', [ErrorController::class, 'index']);
 Route::get('/error/{nama}', [ErrorController::class, 'index']);
+
+Route::get('/kirimemail', [MailController::class, 'index']);
+
+Route::get('/form', function () {
+    return view('biodata');
+});

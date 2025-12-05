@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Foundation\Providers\FoundationServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\Pegawai;
 
 class PegawaiController extends Controller
@@ -17,6 +17,13 @@ class PegawaiController extends Controller
 
         // mengirim data pegawai ke view index
         return view('pegawai', ['pegawai' => $pegawai]);
+    }
+    public function cetak_pdf()
+    {
+        $pegawai = Pegawai::all();
+
+        $pdf = PDF::loadview('pegawai_pdf', ['pegawai' => $pegawai]);
+        return $pdf->download('laporan-pegawai.pdf');
     }
     public function tambah()
     {

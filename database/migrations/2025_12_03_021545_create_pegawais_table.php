@@ -14,6 +14,9 @@ return new class extends Migration
         Schema::create('pegawai', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nama');
+            $table->string('email');
+            $table->string('telepon');
+            $table->string('pekerjaan');
             $table->text('alamat');
             $table->timestamps();
         });
