@@ -76,3 +76,4 @@ Route::get('/form', function () {
 
 Route::get('/siswa', [SiswaController::class, 'index']);
 Route::get('/siswa/export', [SiswaController::class, 'export']);
+Route::post('/siswa/import', [SiswaController::class, 'import']);
